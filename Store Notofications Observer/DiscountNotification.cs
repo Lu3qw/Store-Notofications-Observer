@@ -34,5 +34,16 @@ namespace Store_Notofications_Observer
                 subscribers[category].Remove(customer);
             }
         }
+
+        public void Notify(string category, string message)
+        {
+            if (subscribers.ContainsKey(category))
+            {
+                foreach (var subscriber in subscribers[category])
+                {
+                    subscriber.Update(category, message);
+                }
+            }
+        }
     }
 }
